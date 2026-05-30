@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant App</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 40px;
+      text-align: center;
+    }
+    .tiles {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .tile {
+      width: 150px;
+      height: 150px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+    .tile:hover {
+      transform: scale(1.05);
+      background: #eaeaea;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Restaurant Web App</h1>
+  <div class="tiles">
+    <div id="menu-tile" class="tile">Menu</div>
+    <div id="specials-tile" class="tile">Specials</div>
+    <div id="map-tile" class="tile">Map</div>
+  </div>
+
+  <script>
+    $(function () {
+
+      var categorias = ["L", "D", "S"]; // Lunch, Dinner, Sushi
+
+      // Specials → categoría aleatoria
+      $("#specials-tile").click(function () {
+        var randomIndex = Math.floor(Math.random() * categorias.length);
+        var categoriaSeleccionada = categorias[randomIndex];
+        window.location.href = "menu.html?category=" + categoriaSeleccionada;
+      });
+
+      $("#menu-tile").click(function () {
+        window.location.href = "menu.html";
+      });
+
+      // Map → página fija
+      $("#map-tile").click(function () {
+        window.location.href = "map.html";
+      });
+    });
+  </script>
+
+</body>
+</html>
